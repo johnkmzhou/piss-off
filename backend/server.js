@@ -35,5 +35,5 @@ app.ws('/', function(ws, req) {
 
 app.listen(3000, () => {
 	console.info('Server started on port 3000');
-}
+})
 

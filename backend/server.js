@@ -24,8 +24,11 @@ app.ws('/', function(ws, req) {
 		console.log('Connection ended...');
 	});
 
+	// send a reading from tilt sensor every 50 ms
 	setInterval(()=>{
-		ws.send(tilt());
+		let tilt_value = tilt();
+		console.log(tilt_value)
+		ws.send(tilt_value);
 	}, 50);
 
 });

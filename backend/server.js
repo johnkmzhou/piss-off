@@ -5,7 +5,7 @@ const socket = require('express-ws')(app);
 
 // setup pi connection
 gpio.wiringPiSetup();
-pinMode(8, gpio.modes.INPUT);
+gpio.pinMode(8, gpio.modes.INPUT);
 
 const tilt = () => {
 	return gpio.analogRead(8);

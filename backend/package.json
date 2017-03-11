@@ -1,0 +1,24 @@
+{
+  "name": "piss-off",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnkmzhou/piss-off.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnkmzhou/piss-off/issues"
+  },
+  "homepage": "https://github.com/johnkmzhou/piss-off#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "wiring-pi": "2.2.1"
+  }
+}

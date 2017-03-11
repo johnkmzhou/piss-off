@@ -34,6 +34,12 @@ app.ws('/', function(ws, req) {
 
 });
 
+	// testing
+	setInterval(()=>{
+		let tilt_value = tilt();
+		console.log(tilt_value)
+	}, 1000);
+
 app.listen(3000, () => {
 	console.info('Server started on port 3000');
 })

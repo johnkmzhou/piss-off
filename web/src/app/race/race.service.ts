@@ -15,6 +15,9 @@ export class RaceService {
     { id: 2, name: "Urinal 2", connected: false, server: "ws://169.254.152.230:3000/mercury", socket: null, percentage: 0 }
   );
   constructor() {
+    this.start()
+  }
+  start() {
     this.urinals.forEach(urinal => {
       let ws = new WebSocket(urinal.server);
       let observable = Rx.Observable.create(

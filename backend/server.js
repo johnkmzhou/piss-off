@@ -44,7 +44,7 @@ app.ws('/mercury', function(ws, req) {
 });
 
 // listen for websocket connection
-app.ws('/flush', function(ws, req)) {
+app.ws('/flush', function(ws, req) {
 	// send a reading if button is pushed
 	let interval = setInterval(() => {
 		let i = gpio.digitalRead(7);

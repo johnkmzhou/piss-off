@@ -5,33 +5,48 @@ const socket = require('express-ws')(app);
 
 // setup pi connection
 gpio.wiringPiSetup();
-
-const tilt = () => {
-	return  gpio.analogRead();
-}
+gpio.pinMode(8, gpio.INPUT);
+gpio.pinMode(9, gpio.INPUT);
 
 //app.use(express.static('./public'));
 
 // listen for websocket connections
-app.ws('/', function(ws, req) {
+app.ws('/tilt', function(ws, req) {
+	console.log('Websocket created.', req);
+
 	// event listener waiting for message via socket connection
-	ws.on('message', (message) => {
-		console.log('received: ${message}');
-	});
+	// ws.on('message', (message) => {
+	// console.log('received: ${message}');
+	// });
 
 	// event listener waiting for connection to close
-	ws.on('end', () => {
-		console.log('Connection ended...');
+	ws.on('/end', () => {
+		console.log('Connection closed.');
 	});
 
 	// send a reading from tilt sensor every 50 ms
 	setInterval(()=>{
-		let tilt_value = tilt();
-		console.log(tilt_value)
-		ws.send(tilt_value);
+		ws.send(gpio.digitalRead(8));
 	}, 50);
 
 });
+
+// listen for websocket connections
+app.ws('/mercury', function(ws, req) {
+	console.log('Websocket created.', req);
+
+	// event listener waiting for connection to close
+	ws.on('end', () => {
+		console.log('Connection closed.');
+	});
+
+	// send a reading from tilt sensor every 50 ms
+	setInterval(()=>{
+		ws.send(gpio.digitalRead(9));
+	}, 50);
+
+});
+
 
 app.listen(3000, () => {
 	console.info('Server started on port 3000');

@@ -15,29 +15,31 @@ app.ws('/tilt', function(ws, req) {
 	// console.log('received: ${message}');
 	// });
 
+	// send a reading from tilt sensor every 50 ms
+	let interval = setInterval(()=>{
+		ws.send(gpio.digitalRead(8));
+	}, 500);
+
 	// event listener waiting for connection to close
 	ws.on('/end', () => {
 		console.log('Connection closed.');
+		interval = null;
 	});
-
-	// send a reading from tilt sensor every 50 ms
-	setInterval(()=>{
-		ws.send(gpio.digitalRead(8));
-	}, 500);
 
 });
 
 // listen for websocket connections
 app.ws('/mercury', function(ws, req) {
+	// send a reading from tilt sensor every 50 ms
+	let interval = setInterval(()=>{
+		ws.send(gpio.digitalRead(9));
+	}, 500);
+
 	// event listener waiting for connection to close
 	ws.on('end', () => {
 		console.log('Connection closed.');
+		interval = null;
 	});
-
-	// send a reading from tilt sensor every 50 ms
-	setInterval(()=>{
-		ws.send(gpio.digitalRead(9));
-	}, 500);
 
 });
 

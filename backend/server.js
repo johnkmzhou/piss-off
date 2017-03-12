@@ -11,29 +11,38 @@ gpio.pinMode(9, gpio.INPUT);
 //app.use(express.static('./public'));
 
 // listen for websocket connections
-app.ws('/', function(ws, req) {
+app.ws('/tilt', function(ws, req) {
 	// event listener waiting for message via socket connection
-	ws.on('message', (message) => {
-		console.log('received: ${message}');
-	});
+	// ws.on('message', (message) => {
+	// console.log('received: ${message}');
+	// });
 
 	// event listener waiting for connection to close
-	ws.on('end', () => {
-		console.log('Connection ended...');
+	ws.on('/end', () => {
+		console.log('Connection closed.');
 	});
 
 	// send a reading from tilt sensor every 50 ms
 	setInterval(()=>{
-		let data = {
-			horse1:0,
-			horse2:0
-		};
-		data.horse1 = gpio.digitalRead(8);
-		data.horse2 = gpio.digitalRead(9);
-		ws.send(JSON.stringify(data));
+		ws.send(gpio.digitalRead(8));
 	}, 50);
 
 });
+
+// listen for websocket connections
+app.ws('/mercury', function(ws, req) {
+	// event listener waiting for connection to close
+	ws.on('end', () => {
+		console.log('Connection closed.');
+	});
+
+	// send a reading from tilt sensor every 50 ms
+	setInterval(()=>{
+		ws.send(gpio.digitalRead(9));
+	}, 50);
+
+});
+
 
 app.listen(3000, () => {
 	console.info('Server started on port 3000');

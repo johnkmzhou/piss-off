@@ -1,3 +1,3 @@
-<div [class]="race-field">
-  <track *ngFor="let urinal of raceService.urinals" [urinal]=urinal/>
+<div [class]="race">
+  <urinal *ngFor="let urinal of raceService.urinals" urinal="urinal"></urinal>
 </div>

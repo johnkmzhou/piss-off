@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrackComponent } from './track/track.component';
+import { UrinalComponent } from './urinal/urinal.component';
 import { RaceService } from './race.service'
 
 @Component({

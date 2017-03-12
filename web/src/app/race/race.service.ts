@@ -11,8 +11,8 @@ export class RaceService {
   //     { id: 3, name: "Urinal 3", connected: false, server: "ws://192.168.57.1:12345/ws", socket: null }
   //   );
   public urinals = new Array<Urinal>(
-    { id: 1, name: "Urinal 1", connected: false, server: "ws://169.254.152.230:3000/", socket: null },
-    { id: 2, name: "Urinal 2", connected: false, server: "ws://169.254.152.230:3000/mercury", socket: null }
+    { id: 1, name: "Urinal 1", connected: false, server: "ws://169.254.152.230:3000/tilt", socket: null, percentage: 0 },
+    { id: 2, name: "Urinal 2", connected: false, server: "ws://169.254.152.230:3000/mercury", socket: null, percentage: 0 }
   );
   constructor() {
     this.urinals.forEach(urinal => {

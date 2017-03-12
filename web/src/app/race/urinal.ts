@@ -5,4 +5,5 @@ export class Urinal {
     connected: boolean;
     server: string;
     socket: Rx.Subject<MessageEvent>
+    percentage: number
 }

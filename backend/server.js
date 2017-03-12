@@ -8,12 +8,8 @@ gpio.wiringPiSetup();
 gpio.pinMode(8, gpio.INPUT);
 gpio.pinMode(9, gpio.INPUT);
 
-//app.use(express.static('./public'));
-
 // listen for websocket connections
 app.ws('/tilt', function(ws, req) {
-	console.log('Websocket created.', req);
-
 	// event listener waiting for message via socket connection
 	// ws.on('message', (message) => {
 	// console.log('received: ${message}');
@@ -33,8 +29,6 @@ app.ws('/tilt', function(ws, req) {
 
 // listen for websocket connections
 app.ws('/mercury', function(ws, req) {
-	console.log('Websocket created.', req);
-
 	// event listener waiting for connection to close
 	ws.on('end', () => {
 		console.log('Connection closed.');
@@ -48,7 +42,7 @@ app.ws('/mercury', function(ws, req) {
 });
 
 
-app.listen(3000, () => {
-	console.info('Server started on port 3000');
-})
+app.listen(500, () => {
+	console.info('Server started on port 500');
+});
 

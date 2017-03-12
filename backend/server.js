@@ -12,6 +12,8 @@ gpio.pinMode(9, gpio.INPUT);
 
 // listen for websocket connections
 app.ws('/tilt', function(ws, req) {
+	console.log('Websocket created.', req);
+
 	// event listener waiting for message via socket connection
 	// ws.on('message', (message) => {
 	// console.log('received: ${message}');
@@ -31,6 +33,8 @@ app.ws('/tilt', function(ws, req) {
 
 // listen for websocket connections
 app.ws('/mercury', function(ws, req) {
+	console.log('Websocket created.', req);
+
 	// event listener waiting for connection to close
 	ws.on('end', () => {
 		console.log('Connection closed.');

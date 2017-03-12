@@ -23,7 +23,7 @@ app.ws('/tilt', function(ws, req) {
 	// send a reading from tilt sensor every 50 ms
 	setInterval(()=>{
 		ws.send(gpio.digitalRead(8));
-	}, 50);
+	}, 500);
 
 });
 
@@ -37,12 +37,12 @@ app.ws('/mercury', function(ws, req) {
 	// send a reading from tilt sensor every 50 ms
 	setInterval(()=>{
 		ws.send(gpio.digitalRead(9));
-	}, 50);
+	}, 500);
 
 });
 
 
-app.listen(500, () => {
-	console.info('Server started on port 500');
+app.listen(3000, () => {
+	console.info('Server started on port 3000');
 });
 

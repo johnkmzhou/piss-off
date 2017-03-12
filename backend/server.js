@@ -58,7 +58,7 @@ app.ws('/flush', function(ws, req) {
 		console.log('Connection closed.');
 		interval = null;
 	});
-}
+});
 
 
 app.listen(3000, () => {
